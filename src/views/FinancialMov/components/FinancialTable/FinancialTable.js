@@ -105,11 +105,8 @@ const FinancialTable = props => {
       label: 'DEBITO',
     },
   ];
-
   const [currency, setCurrency] = React.useState('');
-
   const [costcenter, setCostCenter] = React.useState('');
-
   const handleChange = (event) => {
     setCurrency(event.target.value);
   };
@@ -124,15 +121,6 @@ const FinancialTable = props => {
           NOVO MOVIMENTO FINANCEIRO
       </Typography>
         <Grid container spacing={3}>
-          <Grid center item xs={12} sm={6}>
-            <TextField
-              variant="outlined"
-              id="client"
-              name="client"
-              label="Cliente"
-              fullWidth
-            />
-          </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
               variant="outlined"
@@ -143,7 +131,7 @@ const FinancialTable = props => {
               fullWidth
             />
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} sm={6}>
             <TextField
               variant="outlined"
               id="obs"

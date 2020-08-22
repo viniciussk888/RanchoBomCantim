@@ -5,6 +5,7 @@ import moment from 'moment';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { makeStyles } from '@material-ui/styles';
 import {
+  Grid,
   Card,
   CardContent,
   Table,
@@ -13,10 +14,13 @@ import {
   TableHead,
   TableRow,
   Typography,
+  MenuItem,
+  TextField
 } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 
 import { SearchInput } from 'components';
+import { ModalComponent } from 'components'
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -62,6 +66,120 @@ const FinancialTablePag = props => {
 
   const classes = useStyles();
 
+  const [open, setOpen] = React.useState(false);
+  function showModal() {
+    setOpen(!open)
+  }
+
+  const costcenters = [
+    {
+      value: 'REF. VENDA AVISTA',
+      label: 'REF. VENDA AVISTA',
+    },
+    {
+      value: 'REF. VENDA A PRAZO',
+      label: 'REF. VENDA A PRAZO',
+    },
+    {
+      value: 'REF. FORNECEDORES',
+      label: 'REF. FORNECEDORES',
+    },
+    {
+      value: 'REF. PAG. AGUA',
+      label: 'REF. PAG. AGUA',
+    },
+  ];
+
+  const [costcenter, setCostCenter] = React.useState('');
+  const handleChangeCostCenter = (event) => {
+    setCostCenter(event.target.value);
+  };
+
+  const body = (
+    <>
+      <React.Fragment>
+        <Typography variant="h6" gutterBottom>
+          NOVO A PAGAR
+      </Typography>
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              variant="outlined"
+              required
+              id="Referente"
+              name="Referente"
+              label="Referente"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              variant="outlined"
+              id="obs"
+              name="obs"
+              label="Observação"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} sm={3}>
+            <TextField
+              id="costcenter"
+              select
+              required
+              label="Centro de custo"
+              value={costcenter}
+              onChange={handleChangeCostCenter}
+              helperText="Selecione o centro de custo"
+              variant="outlined"
+            >
+              {costcenters.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <TextField
+              variant="outlined"
+              required
+              type="number"
+              id="value"
+              name="value"
+              label="Valor"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} sm={1}>
+            <TextField
+              variant="outlined"
+              required
+              type="number"
+              id="parcelas"
+              name="parcelas"
+              defaultValue="1"
+              label="Parcelas"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <TextField
+              variant="outlined"
+              type="date"
+              required
+              id="dataVencimento"
+              name="dataVencimento"
+              helperText="Data de vencimento"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} >
+            <Button color="primary" variant="contained">GRAVAR</Button>
+          </Grid>
+        </Grid>
+      </React.Fragment>
+    </>
+  )
 
   return (
     <>
@@ -70,6 +188,7 @@ const FinancialTablePag = props => {
         <Button
           color="primary"
           variant="contained"
+          onClick={showModal}
         >
           NOVO A PAGAR
         </Button>
@@ -92,6 +211,8 @@ const FinancialTablePag = props => {
         {...rest}
         className={clsx(classes.root, className)}
       >
+        {open ? <ModalComponent open={true} body={body} /> : null}
+
         <CardContent className={classes.content}>
           <PerfectScrollbar>
             <div className={classes.inner}>
@@ -115,12 +236,6 @@ const FinancialTablePag = props => {
                     >
                       <TableCell>
                         <div className={classes.nameContainer}>
-                          {/*<Avatar
-                          className={classes.avatar}
-                          src={user.avatarUrl}
-                        >
-                          {getInitials(user.name)}
-                        </Avatar>*/}
                           <Typography variant="body1">{user.name}</Typography>
                         </div>
                       </TableCell>
