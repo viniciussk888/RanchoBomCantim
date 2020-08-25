@@ -14,13 +14,14 @@ import {
   TableRow,
   Typography,
   MenuItem,
+  IconButton,
   // IconButton
 } from '@material-ui/core';
 
 
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-//import Search from '@material-ui/icons/Search'
+import Delete from '@material-ui/icons/Delete'
 
 import { Button } from '@material-ui/core';
 
@@ -63,6 +64,9 @@ const useStyles = makeStyles(theme => ({
   },
   searchInput: {
     marginRight: theme.spacing(1)
+  },
+  iconDelete: {
+    color: 'red'
   }
 }));
 
@@ -246,6 +250,7 @@ const FinancialTable = props => {
               <Table>
                 <TableHead>
                   <TableRow>
+                    <TableCell>AÇÕES</TableCell>
                     <TableCell>CENTRO DE CUSTO</TableCell>
                     <TableCell>CLIENTE</TableCell>
                     <TableCell>SINAL</TableCell>
@@ -260,6 +265,11 @@ const FinancialTable = props => {
                       hover
                       key={user.id}
                     >
+                      <TableCell>
+                        <IconButton title="Deletar">
+                          <Delete className={classes.iconDelete} />
+                        </IconButton>
+                      </TableCell>
                       <TableCell>
                         <div className={classes.nameContainer}>
                           {/*<Avatar

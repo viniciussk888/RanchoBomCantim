@@ -11,9 +11,9 @@ import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 //import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import SettingsIcon from '@material-ui/icons/Settings';
 //import LockOpenIcon from '@material-ui/icons/LockOpen';
-import LocalFlorist from '@material-ui/icons/Eco';
+import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import LocalShippingOutlined from '@material-ui/icons/LocalShipping';
-import Assignment from '@material-ui/icons/Assignment';
+import Assignment from '@material-ui/icons/AccountBalance';
 import Contacts from '@material-ui/icons/Contacts';
 import Pets from '@material-ui/icons/Pets';
 
@@ -35,10 +35,10 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2)
   },
   divider: {
-    margin: theme.spacing(2, 0)
+    margin: theme.spacing(1, 0)
   },
   nav: {
-    marginBottom: theme.spacing(2)
+    marginBottom: theme.spacing(1)
   }
 }));
 
@@ -47,7 +47,7 @@ const Sidebar = props => {
 
   const classes = useStyles();
 
-  const pages = [
+  const pagesCad = [
     {
       title: 'Início',
       href: '/dashboard',
@@ -64,11 +64,6 @@ const Sidebar = props => {
       icon: <Contacts />
     },
     {
-      title: 'Agricultura',
-      href: '/agriculture',
-      icon: <LocalFlorist />
-    },
-    {
       title: 'Maquinários',
       href: '/machines',
       icon: <LocalShippingOutlined />
@@ -78,11 +73,42 @@ const Sidebar = props => {
       href: '/animals',
       icon: <Pets />
     },
+    /* {
+      title: 'Authentication',
+      href: '/sign-in',
+      icon: <LockOpenIcon />
+    },
+    {
+      title: 'Typography',
+      href: '/typography',
+      icon: <TextFieldsIcon />
+    },
+    {
+      title: 'Icons',
+      href: '/icons',
+      icon: <ImageIcon />
+    },
+    {
+      title: 'Account',
+      href: '/account',
+      icon: <AccountBoxIcon />
+    }, */
+  ];
+
+  const pagesMov = [
+    {
+      title: 'Movimentação',
+      href: '/movement',
+      icon: <ShoppingCart />
+    },
     {
       title: 'Financeiro',
       href: '/financialmov',
       icon: <Assignment />
-    },
+    }
+  ];
+
+  const pagesConf = [
     {
       title: 'Usuários',
       href: '/users',
@@ -131,9 +157,18 @@ const Sidebar = props => {
         <Divider className={classes.divider} />
         <SidebarNav
           className={classes.nav}
-          pages={pages}
+          pages={pagesCad}
         />
-        {/*espaço sidebar embaixo*/}
+        <Divider className={classes.divider} />
+        <SidebarNav
+          className={classes.nav}
+          pages={pagesMov}
+        />
+        <Divider className={classes.divider} />
+        <SidebarNav
+          className={classes.nav}
+          pages={pagesConf}
+        />
       </div>
     </Drawer>
   );

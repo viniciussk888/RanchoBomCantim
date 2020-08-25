@@ -13,12 +13,14 @@ import {
   TableHead,
   TableRow,
   Typography,
+  IconButton,
   Grid,
   TextField,
   MenuItem
 } from '@material-ui/core';
 import { Button } from '@material-ui/core';
-
+import Delete from '@material-ui/icons/Delete'
+import MonetizationOn from '@material-ui/icons/MonetizationOn'
 import { SearchInput } from 'components';
 import { ModalComponent } from 'components'
 
@@ -58,6 +60,13 @@ const useStyles = makeStyles(theme => ({
   },
   searchInput: {
     marginRight: theme.spacing(1)
+  },
+  iconButtons: {
+    display: 'flex',
+    justifyContent: 'center'
+  },
+  iconDelete: {
+    color: 'red'
   }
 }));
 
@@ -231,6 +240,7 @@ const FinancialTableRec = props => {
               <Table>
                 <TableHead>
                   <TableRow>
+                    <TableCell>AÇÕES</TableCell>
                     <TableCell>CLIENTE</TableCell>
                     <TableCell>CENTRO DE CUSTO</TableCell>
                     <TableCell>PARCELA</TableCell>
@@ -247,6 +257,16 @@ const FinancialTableRec = props => {
                       hover
                       key={user.id}
                     >
+                      <TableCell>
+                        <di className={classes.iconButtons}>
+                          <IconButton title="Deletar">
+                            <Delete className={classes.iconDelete} />
+                          </IconButton>
+                          <IconButton title="Baixar título">
+                            <MonetizationOn color="primary" />
+                          </IconButton>
+                        </di>
+                      </TableCell>
                       <TableCell>
                         <div className={classes.nameContainer}>
                           <Typography variant="body1">{user.name}</Typography>

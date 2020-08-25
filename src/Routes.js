@@ -12,7 +12,9 @@ import {
   NewClient as NewClientView,
   UserList as UserListView,
   NewMachine as NewMachineView,
+  NewAnimal as NewAnimalView,
   MachineList as MachineListView,
+  AnimalList as AnimalListView,
   NewUser as NewUserView,
   FinancialMov as FinancialMovView,
   Account as AccountView,
@@ -83,6 +85,18 @@ const Routes = () => {
         exact
         layout={MainLayout}
         path="/newmachine"
+      />
+      <RouteWithLayout
+        component={AnimalListView}
+        exact
+        layout={MainLayout}
+        path="/animals"
+      />
+      <RouteWithLayout
+        component={NewAnimalView}
+        exact
+        layout={MainLayout}
+        path="/newanimal"
       />
       <RouteWithLayout
         component={FinancialMovView}
