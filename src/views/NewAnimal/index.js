@@ -53,35 +53,6 @@ export default function NewAnimal() {
     setCategory(event.target.value);
   };
 
-  const handleChangeStatus = (event) => {
-    setStatus(event.target.value);
-  };
-
-
-  const statusList = [
-    {
-      value: 'DISPONÍVEL',
-      label: 'DISPONÍVEL',
-    },
-    {
-      value: 'INDISPONÍVEL',
-      label: 'INDISPONÍVEL',
-    },
-    {
-      value: 'ALUGADO',
-      label: 'ALUGADO',
-    },
-    {
-      value: 'EM USO',
-      label: 'EM USO',
-    },
-    {
-      value: 'EM MANUTENÇÃO',
-      label: 'EM MANUTENÇÃO',
-    },
-  ];
-  const [status, setStatus] = React.useState('');
-
   return (
     <>
       <Grid item xs={12} className={classes.grid}>

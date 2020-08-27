@@ -6,7 +6,7 @@ import { Button } from '@material-ui/core';
 
 import { useHistory } from 'react-router-dom'
 
-import { SearchInput } from 'components';
+//import { SearchInput } from 'components';
 
 const useStyles = makeStyles(theme => ({
   root: {},
